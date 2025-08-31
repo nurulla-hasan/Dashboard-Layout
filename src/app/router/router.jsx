@@ -10,7 +10,7 @@ import Privacy from "@/app/pages/settings/privacy/Privacy";
 import Orders from "@/app/pages/orders/Orders";
 import Payments from "@/app/pages/payments/Payments";
 import Notification from "@/app/pages/notifications/Notification";
-import Login from "@/app/pages/auth/login/Login";
+import Login from "@/app/pages/auth/login/Login.jsx";
 import ForgetPassword from "@/app/pages/auth/forget-password/ForgetPassword";
 import ResetPassword from "@/app/pages/auth/reset-password/ResetPassword";
 import VerifyOtp from "@/app/pages/auth/verify-otp/VerifyOtp";

@@ -43,7 +43,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
     }, [location, isSidebarOpen, setIsSidebarOpen]);
 
     const handleLogout = () => {
-        window.location.href = 'auth/login';
+        window.location.href = '/auth/login';
     };
 
     return (
