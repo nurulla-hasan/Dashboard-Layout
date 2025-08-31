@@ -1,7 +1,7 @@
 import { Bell, Moon, Sun, Menu } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useTheme } from "@/theme/theme-provider";
-import { Toggle } from "../ui/toggle";
+import { Toggle } from "@/components/ui/toggle";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 

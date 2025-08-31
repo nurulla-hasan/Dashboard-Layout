@@ -32,7 +32,7 @@ const Notification = () => {
         {notifications.map((notification) => (
           <div
             key={notification.id}
-            className="flex items-start p-4 rounded-lg border"
+            className="flex items-start p-4 rounded-lg border bg-card"
           >
             <Avatar className="h-9 w-9">
               <AvatarImage src={notification.avatar} alt="Avatar" />
@@ -41,9 +41,9 @@ const Notification = () => {
             <div className="ml-4 flex-grow">
               <div className="flex justify-between items-center">
                 <h2 className="font-semibold">{notification.title}</h2>
-                <p className="text-xs text-gray-500">{notification.time}</p>
+                <p className="text-xs">{notification.time}</p>
               </div>
-              <p className="text-sm text-gray-600 mt-1">
+              <p className="text-sm text-muted-foreground mt-1">
                 {notification.description}
               </p>
             </div>

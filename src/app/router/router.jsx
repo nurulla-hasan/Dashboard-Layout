@@ -1,19 +1,19 @@
 import { createBrowserRouter } from "react-router-dom";
-import MainLayout from "@/layout/MainLayout";
-import AuthLayout from "@/layout/AuthLayout";
-import Profile from "@/pages/settings/profile/Profile";
-import Dashboard from "@/pages/dasboard/Dashboard.jsx";
-import Users from "@/pages/users/Users";
-import About from "@/pages/settings/about-us/About";
-import Terms from "@/pages/settings/terms/Terms";
-import Privacy from "@/pages/settings/privacy/Privacy";
-import Orders from "@/pages/orders/Orders";
-import Payments from "@/pages/payments/Payments";
-import Notification from "@/pages/notifications/Notification";
-import Login from "@/pages/auth/login/Login";
-import ForgetPassword from "@/pages/auth/forget-password/ForgetPassword";
-import ResetPassword from "@/pages/auth/reset-password/ResetPassword";
-import VerifyOtp from "@/pages/auth/verify-otp/VerifyOtp";
+import MainLayout from "@/app/layout/MainLayout";
+import AuthLayout from "@/app/layout/AuthLayout";
+import Profile from "@/app/pages/settings/profile/Profile";
+import Dashboard from "@/app/pages/dasboard/Dashboard.jsx";
+import Users from "@/app/pages/users/Users";
+import About from "@/app/pages/settings/about-us/About";
+import Terms from "@/app/pages/settings/terms/Terms";
+import Privacy from "@/app/pages/settings/privacy/Privacy";
+import Orders from "@/app/pages/orders/Orders";
+import Payments from "@/app/pages/payments/Payments";
+import Notification from "@/app/pages/notifications/Notification";
+import Login from "@/app/pages/auth/login/Login";
+import ForgetPassword from "@/app/pages/auth/forget-password/ForgetPassword";
+import ResetPassword from "@/app/pages/auth/reset-password/ResetPassword";
+import VerifyOtp from "@/app/pages/auth/verify-otp/VerifyOtp";
 
 export const router = createBrowserRouter([
     {
