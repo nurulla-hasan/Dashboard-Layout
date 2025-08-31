@@ -46,14 +46,14 @@ const Topbar = ({ onMenuClick }) => {
                 </Toggle>
 
                 <div className="flex items-center ">
-                    <div className="lg:flex items-center gap-3 hidden">
+                    <Link to="/settings/profile" className="lg:flex items-center gap-3 hidden">
                         <Avatar className="h-10 w-10">
                             {/* Replace with actual user image */}
                             <AvatarImage src="https://github.com/shadcn.png" alt="User avatar" />
                             <AvatarFallback>NH</AvatarFallback> {/* make a getInitials function */}
                         </Avatar>
                         <span className="font-medium">Nurulla Hasan</span>
-                    </div>
+                    </Link>
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                             <Avatar className="h-10 w-10 lg:hidden">
