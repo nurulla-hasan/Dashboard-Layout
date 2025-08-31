@@ -1,19 +1,22 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "@/app/layout/MainLayout";
 import AuthLayout from "@/app/layout/AuthLayout";
-import Profile from "@/app/pages/settings/profile/Profile";
-import Dashboard from "@/app/pages/dasboard/Dashboard.jsx";
-import Users from "@/app/pages/users/Users";
-import About from "@/app/pages/settings/about-us/About";
-import Terms from "@/app/pages/settings/terms/Terms";
-import Privacy from "@/app/pages/settings/privacy/Privacy";
-import Orders from "@/app/pages/orders/Orders";
-import Payments from "@/app/pages/payments/Payments";
-import Notification from "@/app/pages/notifications/Notification";
-import Login from "@/app/pages/auth/login/Login.jsx";
-import ForgetPassword from "@/app/pages/auth/forget-password/ForgetPassword";
-import ResetPassword from "@/app/pages/auth/reset-password/ResetPassword";
-import VerifyOtp from "@/app/pages/auth/verify-otp/VerifyOtp";
+import { lazy } from "react";
+
+const Dashboard = lazy(() => import("@/app/pages/dasboard/Dashboard.jsx"));
+const Users = lazy(() => import("@/app/pages/users/Users"));
+const About = lazy(() => import("@/app/pages/settings/about-us/About"));
+const Terms = lazy(() => import("@/app/pages/settings/terms/Terms"));
+const Privacy = lazy(() => import("@/app/pages/settings/privacy/Privacy"));
+const Orders = lazy(() => import("@/app/pages/orders/Orders"));
+const Payments = lazy(() => import("@/app/pages/payments/Payments"));
+const Notification = lazy(() => import("@/app/pages/notifications/Notification"));
+const Profile = lazy(() => import("@/app/pages/settings/profile/Profile"));
+const Login = lazy(() => import("@/app/pages/auth/login/Login.jsx"));
+const ForgetPassword = lazy(() => import("@/app/pages/auth/forget-password/ForgetPassword"));
+const ResetPassword = lazy(() => import("@/app/pages/auth/reset-password/ResetPassword"));
+const VerifyOtp = lazy(() => import("@/app/pages/auth/verify-otp/VerifyOtp"));
+
 
 export const router = createBrowserRouter([
     {
