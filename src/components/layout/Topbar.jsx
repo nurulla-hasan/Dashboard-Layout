@@ -1,20 +1,25 @@
-import { Bell, Moon, Sun } from "lucide-react";
+import { Bell, Moon, Sun, Menu } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useTheme } from "@/theme/theme-provider";
 import { Toggle } from "../ui/toggle";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
-const Topbar = () => {
+const Topbar = ({ onMenuClick }) => {
     const { setTheme, theme } = useTheme();
     return (
-        <header className="fixed top-0 right-0 left-64 flex items-center justify-end p-4 h-20 bg-card text-card-foreground border-b border-border">
+        <header className="fixed top-0 right-0 left-0 flex items-center justify-between p-4 h-20 bg-card text-card-foreground border-b border-border lg:justify-end">
+            <Button variant="ghost" size="icon" className="lg:hidden" onClick={onMenuClick}>
+                <Menu />
+            </Button>
             <div className="flex items-center space-x-5 pr-6">
-                <div className="relative cursor-pointer">
+                <Link to="notifications" className="relative cursor-pointer">
                     <span className="absolute -top-1 -right-1 flex h-3 w-3">
                         <span className="absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                         <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
                     </span>
-                    <Bell className="h-6 w-6" />
-                </div>
+                    <Bell />
+                </Link>
                 <Toggle
                     variant="outline"
                     className="group rounded-full"

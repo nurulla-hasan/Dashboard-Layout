@@ -10,6 +10,7 @@ import {
     ReceiptText,
     GlobeLock
 } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
 
@@ -27,12 +28,21 @@ const settingsSubItems = [
     { name: "Privacy Policy", icon: GlobeLock, href: "/settings/privacy" },
 ];
 
-const Sidebar = () => {
+const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
+    const [isSettingsOpen, setIsSettingsOpen] = useState(false);
     const location = useLocation();
     const isSettingsPath = location.pathname.startsWith('/settings');
+    const prevLocation = useRef(location);
+
+    useEffect(() => {
+        if (prevLocation.current !== location && isSidebarOpen) {
+            setIsSidebarOpen(false);
+        }
+        prevLocation.current = location;
+    }, [location, isSidebarOpen, setIsSidebarOpen]);
 
     return (
-        <div className="flex flex-col h-screen bg-sidebar text-sidebar-foreground w-64 border-r border-border">
+        <div className={`fixed top-0 left-0 z-40 h-screen bg-sidebar text-sidebar-foreground w-64 border-r border-border transition-transform duration-300 ease-in-out transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 flex flex-col`}>
             <div className="border-b p-[21.5px]">
                 <h1 className="text-3xl font-bold tracking-wider text-foreground">DASHBOARD</h1>
             </div>
@@ -42,21 +52,22 @@ const Sidebar = () => {
                         `w-full flex items-center justify-start p-2 rounded-sm text-sm font-medium transition-colors duration-200 border 
                     ${isActive ? "bg-primary text-primary-foreground" : "hover:bg-accent hover:text-accent-foreground bg-black/5 dark:bg-white/5"
                         }`
-                    }>
+                    } onClick={() => setIsSidebarOpen(false)}>
                         <item.icon className="mr-2 w-4 h-4" />
                         {item.name}
                     </NavLink>
                 ))}
 
                 <Collapsible defaultOpen={isSettingsPath}>
-                    <CollapsibleTrigger className={`w-full flex items-center justify-between p-2 rounded-sm text-base font-medium cursor-pointer transition-colors duration-200 border 
+                    <CollapsibleTrigger onClick={() => setIsSettingsOpen(!isSettingsOpen)} className={`w-full flex items-center justify-between p-2 rounded-sm text-base font-medium cursor-pointer transition-colors duration-200 border 
                     ${isSettingsPath ? "bg-primary text-primary-foreground" : "hover:bg-accent hover:text-accent-foreground bg-black/5 dark:bg-white/5"
                         }`}>
                         <div className="flex items-center text-sm ">
                             <Settings className="mr-2 h-4 w-4" />
                             Settings
                         </div>
-                        <ChevronDown className="h-4 w-4 transition-transform duration-300 data-[state=open]:rotate-180" />
+                        <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${isSettingsOpen ? "-rotate-180" : ""}`} />
+
                     </CollapsibleTrigger>
                     <CollapsibleContent className="py-2 space-y-2">
                         {settingsSubItems.map((item, index) => (
@@ -68,6 +79,7 @@ const Sidebar = () => {
                                     `animate-fade-in-up w-[90%] ml-5 flex items-center justify-start p-2 rounded-sm text-sm font-medium transition-colors duration-200 border 
                                 ${isActive ? "bg-primary text-primary-foreground" : "hover:bg-accent hover:text-accent-foreground bg-black/5 dark:bg-white/5"}`
                                 }
+                                onClick={() => setIsSidebarOpen(false)}
                             >
                                 <item.icon className="mr-2 w-4 h-4" />
                                 {item.name}

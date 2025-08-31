@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
-import Layout from "@/layout/Layout";
+import MainLayout from "@/layout/MainLayout";
+import AuthLayout from "@/layout/AuthLayout";
 import Profile from "@/pages/settings/profile/Profile";
 import Dashboard from "@/pages/dasboard/Dashboard.jsx";
 import Users from "@/pages/users/Users";
@@ -8,16 +9,19 @@ import Terms from "@/pages/settings/terms/Terms";
 import Privacy from "@/pages/settings/privacy/Privacy";
 import Orders from "@/pages/orders/Orders";
 import Payments from "@/pages/payments/Payments";
+import Notification from "@/pages/notifications/Notification";
+import Login from "@/pages/auth/login/Login";
+import ForgetPassword from "@/pages/auth/forget-password/ForgetPassword";
+import ResetPassword from "@/pages/auth/reset-password/ResetPassword";
+import VerifyOtp from "@/pages/auth/verify-otp/VerifyOtp";
 
 export const router = createBrowserRouter([
     {
         path: "/",
-        element: <Layout />,
-        // Add an error element here for better error handling if you want
-        // errorElement: <ErrorPage />,
+        element: <MainLayout />,
         children: [
             {
-                index: true, // This makes it the default child route for "/"
+                index: true,
                 element: <Dashboard />
             },
             {
@@ -32,8 +36,10 @@ export const router = createBrowserRouter([
                 path: "payments",
                 element: <Payments />
             },
-
-            // Settings Route
+            {
+                path: "notifications",
+                element: <Notification />
+            },
             {
                 path: "settings/profile",
                 element: <Profile />
@@ -49,6 +55,28 @@ export const router = createBrowserRouter([
             {
                 path: "settings/privacy",
                 element: <Privacy />
+            },
+        ]
+    },
+    {
+        path: "/auth",
+        element: <AuthLayout />,
+        children: [
+            {
+                path: "login",
+                element: <Login />
+            },
+            {
+                path: "forgot-password",
+                element: <ForgetPassword />
+            },
+            {
+                path: "verify-otp",
+                element: <VerifyOtp />
+            },
+            {
+                path: "reset-password",
+                element: <ResetPassword />
             },
         ]
     }
