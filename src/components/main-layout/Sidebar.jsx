@@ -13,6 +13,8 @@ import {
 import { useEffect, useRef, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { useDispatch } from "react-redux";
+import { setAccessToken, setUser } from "@/redux/feature/auth/authSlice";
 
 
 const navItems = [
@@ -30,6 +32,7 @@ const settingsSubItems = [
 ];
 
 const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
+    const dispatch = useDispatch();
     const [isSettingsOpen, setIsSettingsOpen] = useState(false);
     const location = useLocation();
     const isSettingsPath = location.pathname.startsWith('/settings');
@@ -43,7 +46,9 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
     }, [location, isSidebarOpen, setIsSidebarOpen]);
 
     const handleLogout = () => {
-        window.location.href = '/auth/login';
+        dispatch(setUser(null));
+        dispatch(setAccessToken(null));
+        window.location.href = "/auth/login";
     };
 
     return (
