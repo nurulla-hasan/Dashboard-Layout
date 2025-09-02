@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const notifications = [
@@ -26,31 +27,33 @@ const notifications = [
 
 const Notification = () => {
   return (
-    <div>
-      <h1 className="text-2xl font-bold mb-4">Notifications</h1>
-      <div className="space-y-4">
-        {notifications.map((notification) => (
-          <div
-            key={notification.id}
-            className="flex items-start p-4 rounded-lg border bg-card"
-          >
-            <Avatar className="h-9 w-9">
-              <AvatarImage src={notification.avatar} alt="Avatar" />
-              <AvatarFallback>OM</AvatarFallback>
-            </Avatar>
-            <div className="ml-4 flex-grow">
-              <div className="flex justify-between items-center">
-                <h2 className="font-semibold">{notification.title}</h2>
-                <p className="text-xs">{notification.time}</p>
+    <Suspense fallback={<div className="flex items-center justify-center h-64">Loading Notifications...</div>}>
+      <div>
+        <h1 className="text-2xl font-bold mb-4">Notifications</h1>
+        <div className="space-y-4">
+          {notifications.map((notification) => (
+            <div
+              key={notification.id}
+              className="flex items-start p-4 rounded-lg border bg-card"
+            >
+              <Avatar className="h-9 w-9">
+                <AvatarImage src={notification.avatar} alt="Avatar" />
+                <AvatarFallback>OM</AvatarFallback>
+              </Avatar>
+              <div className="ml-4 flex-grow">
+                <div className="flex justify-between items-center">
+                  <h2 className="font-semibold">{notification.title}</h2>
+                  <p className="text-xs">{notification.time}</p>
+                </div>
+                <p className="text-sm text-muted-foreground mt-1">
+                  {notification.description}
+                </p>
               </div>
-              <p className="text-sm text-muted-foreground mt-1">
-                {notification.description}
-              </p>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+    </Suspense>
   );
 };
 
