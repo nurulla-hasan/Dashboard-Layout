@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import Title from "@/components/ui/Title";
 
 const notifications = [
   {
@@ -29,7 +30,7 @@ const Notification = () => {
   return (
     <Suspense fallback={<div className="flex items-center justify-center h-64">Loading Notifications...</div>}>
       <div>
-        <h1 className="text-2xl font-bold mb-4">Notifications</h1>
+        <Title title="Notifications" />
         <div className="space-y-4">
           {notifications.map((notification) => (
             <div
